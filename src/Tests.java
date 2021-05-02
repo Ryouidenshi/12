@@ -8,7 +8,7 @@ public class Tests {
         Integer.decode("");
     }
 
-    @Test(expected = NumberFormatException.class)
+    @Test(expected = NullPointerException.class)
     public void testNull() {
         Integer.decode(null);
     }
@@ -50,7 +50,7 @@ public class Tests {
 
     @Test
     public void testRadixFourth() {
-        Assert.assertEquals(48, Integer.decode("#22").longValue()); //16 СС
+        Assert.assertEquals(34, Integer.decode("#22").longValue()); //16 СС
     }
 
     @Test
@@ -83,12 +83,12 @@ public class Tests {
         Assert.assertEquals(1, Integer.decode("01").longValue()); //8 СС
     }
 
-    @Test
+    @Test(expected = NumberFormatException.class)
     public void testRadixEleventh() {
         Integer.decode("2#");
     }
 
-    @Test
+    @Test(expected = NumberFormatException.class)
     public void testRadixTwenty() {
         Integer.decode("20X1");
     }
